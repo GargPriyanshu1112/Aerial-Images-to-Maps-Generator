@@ -1,1 +1,1 @@
-# Image-to-Image-Translation-pix2pix-
+# Image-to-Image-Translation (pix2pix)
