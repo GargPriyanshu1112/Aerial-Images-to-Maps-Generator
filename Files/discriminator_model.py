@@ -45,4 +45,11 @@ def define_discriminator(inp_shape):
     d = Conv2D(filters=1, kernel_size=(4, 4), padding='same', kernel_initializer=init)(d)
     patch_output = sigmoid(d)
 
-    return Model(inputs=[inp_src_img, inp_tar_img], outputs=patch_output)
+    model = Model(inputs=[inp_src_img, inp_tar_img], outputs=patch_output)
+    
+    # Compile the discriminator model
+    model.compile(loss='binary_crossentropy',
+                          optimizer=tf.keras.optimizers.Adam(learning_rate=0.0002, beta_1=0.5, beta_2=0.999)) # add loss weight
+    
+    return model
+    
