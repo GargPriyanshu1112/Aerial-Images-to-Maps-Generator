@@ -1,15 +1,15 @@
-# # Import Dependencies
-# import tensorflow as tf
-# from keras.initializers import RandomNormal
-# from tensorflow.keras.layers import Conv2D
-# from tensorflow.keras.layers import BatchNormalization
-# from tensorflow.keras.layers import LeakyReLU
-# from tensorflow.keras.layers import Conv2DTranspose
-# from tensorflow.keras.layers import Dropout
-# from tensorflow.keras.layers import Concatenate
-# from tensorflow.keras.layers import Input
-# from tensorflow.keras.activations import relu, tanh
-# from tensorflow.keras.models import Model
+# Import Dependencies
+import tensorflow as tf
+from keras.initializers import RandomNormal
+from tensorflow.keras.layers import Conv2D
+from tensorflow.keras.layers import BatchNormalization
+from tensorflow.keras.layers import LeakyReLU
+from tensorflow.keras.layers import Conv2DTranspose
+from tensorflow.keras.layers import Dropout
+from tensorflow.keras.layers import Concatenate
+from tensorflow.keras.layers import Input
+from tensorflow.keras.activations import relu, tanh
+from tensorflow.keras.models import Model
 
 
 def define_encoder_block(layer_inp, n_filters, batch_norm=True):
