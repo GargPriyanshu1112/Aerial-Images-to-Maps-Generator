@@ -41,7 +41,7 @@ def plot_images(src_img, gen_img, tar_img):
     images = np.vstack([src_img, gen_img, tar_img])
     images = (images + 1) * 127.5 # Rescale the images
     
-    titles = ["Source Image, Generated Image", "Image Expected"]
+    titles = ["Source Image", "Generated Image", "Image Expected"]
     
     # Plot the images
     for i in range(len(images)):
