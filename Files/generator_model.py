@@ -90,7 +90,7 @@ def define_decoder(inputs, convs):
     return dec_output
 
 
-def define_generator(inp_shape=(256, 256, 3)): # check shape ?
+def define_generator(inp_shape=(256, 256, 3)):
     init = RandomNormal(mean=0, stddev=0.02) # kernel weights initialization
 
     inputs = Input(shape=inp_shape)
