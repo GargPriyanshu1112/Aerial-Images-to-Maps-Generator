@@ -49,7 +49,7 @@ def define_discriminator(inp_shape):
     
     # Compile the discriminator model
     model.compile(loss='binary_crossentropy',
-                          optimizer=tf.keras.optimizers.Adam(learning_rate=0.0002, beta_1=0.5, beta_2=0.999)) # add loss weight
+                  optimizer=tf.keras.optimizers.Adam(learning_rate=0.0002, beta_1=0.5, beta_2=0.999),
+                  loss_weights=[0.5]) # The discriminator loss accounts for 50% of the total loss
     
     return model
-    
