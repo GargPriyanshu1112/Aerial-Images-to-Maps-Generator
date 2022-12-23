@@ -32,11 +32,11 @@ def define_discriminator_block(inputs, n_filters, batch_norm=False):
 def define_discriminator(inp_shape):
     init = RandomNormal(mean=0.0, stddev=0.02) # kernel weights initialization
 
-    inp_src_img = Input(shape=inp_shape) # input source image
-    inp_tar_img = Input(shape=inp_shape) # input target image
+    src_img = Input(shape=inp_shape) # input source image
+    tar_img = Input(shape=inp_shape) # input target image
 
     # Concatenate source image and target image channel-wise
-    concat_inp = Concatenate()([inp_src_img, inp_tar_img])
+    concat_inp = Concatenate()([src_img, tar_img])
 
     d = define_discriminator_block(inputs=concat_inp, n_filters=64)
     d = define_discriminator_block(inputs=d, n_filters=128, batch_norm=True)
@@ -45,7 +45,7 @@ def define_discriminator(inp_shape):
     d = Conv2D(filters=1, kernel_size=(4, 4), padding='same', kernel_initializer=init)(d)
     patch_output = sigmoid(d)
 
-    model = Model(inputs=[inp_src_img, inp_tar_img], outputs=patch_output)
+    model = Model(inputs=[src_img, tar_img], outputs=patch_output)
     
     # Compile the discriminator model
     model.compile(loss='binary_crossentropy',
