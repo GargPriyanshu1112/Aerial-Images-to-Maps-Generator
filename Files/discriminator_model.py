@@ -4,8 +4,6 @@ from keras.initializers import RandomNormal
 from tensorflow.keras.layers import Conv2D
 from tensorflow.keras.layers import BatchNormalization
 from tensorflow.keras.layers import LeakyReLU
-from tensorflow.keras.layers import Conv2DTranspose
-from tensorflow.keras.layers import Dropout
 from tensorflow.keras.layers import Concatenate
 from tensorflow.keras.layers import Input
 from tensorflow.keras.activations import sigmoid
