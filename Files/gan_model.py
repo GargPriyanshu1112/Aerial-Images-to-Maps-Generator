@@ -7,7 +7,7 @@ from generator_model import define_generator
 from discriminator_model import define_discriminator
 
 
-def define_gan(g_model, d_model, inp_shape):
+def define_gan(inp_shape):
     # Get the Generator model
     g_model = define_generator(inp_shape)
     # Get the Discriminator model
