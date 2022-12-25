@@ -32,4 +32,4 @@ def define_gan(g_model, d_model, inp_shape):
                       optimizer=tf.keras.optimizers.Adam(learning_rate=0.0002, beta_1=0.5, beta_2=0.999),
                       loss_weights=[1, 100]) # Authors suggested weighting BCE vs L1 as 1:100
 
-    return gan_model
+    return g_model, d_model, gan_model
