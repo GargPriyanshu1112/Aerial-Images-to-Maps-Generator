@@ -10,12 +10,12 @@ from tensorflow.keras.activations import sigmoid
 from tensorflow.keras.models import Model
 
 
-def define_discriminator_block(inputs, n_filters, strides, batch_norm=False):
+def define_discriminator_block(inputs, n_filters, batch_norm=False):
     init = RandomNormal(mean=0.0, stddev=0.02) # kernel weights initialization
 
     x = Conv2D(filters=n_filters,
                kernel_size=(4, 4),
-               strides=strides,
+               strides=(2, 2),
                padding='same',
                kernel_initializer=init)(inputs)
     
@@ -36,12 +36,11 @@ def define_discriminator(inp_shape):
     # Concatenate source image and target image channel-wise
     concat_inp = Concatenate()([src_img, tar_img])
 
-    d = define_discriminator_block(inputs=concat_inp, n_filters=64, strides=(2, 2))
-    d = define_discriminator_block(inputs=d, n_filters=128, strides=(2, 2), batch_norm=True)
-    d = define_discriminator_block(inputs=d, n_filters=256, strides=(2, 2), batch_norm=True)
-    d = define_discriminator_block(inputs=d, n_filters=512, strides=(2, 2), batch_norm=True)
-    d = define_discriminator_block(inputs=d, n_filters=512, strides=(1, 1), batch_norm=True)  # not in the original paper
-    d = Conv2D(filters=1, kernel_size=(4, 4), strides=(1, 1), padding='same', kernel_initializer=init)(d)
+    d = define_discriminator_block(inputs=concat_inp, n_filters=64)
+    d = define_discriminator_block(inputs=d, n_filters=128, batch_norm=True)
+    d = define_discriminator_block(inputs=d, n_filters=256, batch_norm=True)
+    d = define_discriminator_block(inputs=d, n_filters=512, batch_norm=True)
+    d = Conv2D(filters=1, kernel_size=(4, 4), padding='same', kernel_initializer=init)(d)
     patch_output = sigmoid(d)
 
     model = Model(inputs=[src_img, tar_img], outputs=patch_output)
