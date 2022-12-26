@@ -25,7 +25,7 @@ def define_gan(inp_shape):
     dis_output = d_model([src_img, gen_img])
     # Instantiate the model with source image as input, fake image generated
     # by the generator and discriminator output (0 or 1) as as outputs
-    gan_model = Model(inputs=src_img, outputs=[gen_img, dis_output])
+    gan_model = Model(inputs=src_img, outputs=[dis_output, gen_image])
 
     # Compile the gan model
     gan_model.compile(loss=["binary_crossentropy", "mae"],
