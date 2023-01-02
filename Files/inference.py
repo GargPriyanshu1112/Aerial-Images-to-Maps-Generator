@@ -4,9 +4,6 @@ import os
 from keras.utils import load_img, img_to_array
 
 
-VAL_IMAGES_DIRPATH = "/content/data/maps/val"
-
-
 def get_test_sample(dirpath, img_size=(256, 512)):
     # Get file path
     fname = np.random.choice(os.listdir(dirpath))
@@ -37,13 +34,3 @@ def plot_image(src_img, gen_img, tar_img):
         plt.title(titles[i])
         plt.axis(False)
     plt.show()
-
-
-# Load the test image
-src, tar = get_test_sample(VAL_IMAGES_DIRPATH)
-
-# Get the generated image
-gen = model.predict(np.expand_dims(src, axis=0))
-
-# Plot
-plot_image(src, gen, tar)
