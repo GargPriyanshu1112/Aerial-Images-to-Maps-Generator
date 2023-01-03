@@ -22,14 +22,17 @@ def get_test_sample(dirpath, img_size=(256, 512)):
 
 
 def plot_image(src_img, gen_img, tar_img):
-    images = np.vstack([src_img, gen_img, tar_img])
-    images = (images + 1) * 127.5 # Rescale the images
+    images = np.array([src_img, gen_img, tar_img])
+    images = (images[:] + 1) * 127.5 # Rescale the images
+    images = images.astype('uint8')
     
     titles = ["Source Image", "Generated Image", "Image Expected"]
     
     # Plot the images
+    plt.figure(figsize=(10, 7))
     for i in range(len(images)):
         plt.subplot(1, 3, i+1)
+        print('dh')
         plt.imshow(images[i])
         plt.title(titles[i])
         plt.axis(False)
