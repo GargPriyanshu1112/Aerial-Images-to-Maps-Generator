@@ -32,7 +32,6 @@ def plot_image(src_img, gen_img, tar_img):
     plt.figure(figsize=(10, 7))
     for i in range(len(images)):
         plt.subplot(1, 3, i+1)
-        print('dh')
         plt.imshow(images[i])
         plt.title(titles[i])
         plt.axis(False)
