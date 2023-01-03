@@ -2,6 +2,7 @@
 import numpy as np
 import os
 from keras.utils import load_img, img_to_array
+import matplotlib.pyplot as plt 
 
 
 def get_test_sample(dirpath, img_size=(256, 512)):
